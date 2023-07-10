@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Add a gray background color with some padding */
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align-last: center;
+  background: red;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+   background-color: red;
+   padding: 20px;
+   margin-top: 20px;
+   background-image: none;
+   
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: red;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 0, 0);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  text-decoration: black;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+#searchbar{
+     margin-left: 15%;
+     padding:15px;
+     border-radius: 10px;
+     align-content: center;
+   }
+
+</style>
+<script>
+function readMore(city) { let dots = document.querySelector(`.card[data-city="${city}"] .dots`); 
+let moreText = document.querySelector(`.card[data-city="${city}"] .more`); 
+let btnText = document.querySelector(`.card[data-city="${city}"] .myBtn`); 
+if (dots.style.display === "none") { dots.style.display = "inline"; btnText.textContent = "Read more"; moreText.style.display = "none"; } 
+else { dots.style.display = "none"; btnText.textContent = "Read less"; moreText.style.display = "inline"; } 
+}
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+jQuery(document).ready(function($){ 
+      $('#gsa_search').gsaEmbed({ 
+        'resultsPerPage': 1 
+      }); 
+    }); 
+  
+</script>
+</head>
+<body>
+<div class="header">
+<div id="mySidenav" class="sidenav">
+v  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="Contact.html">Contact</a>
+</div>
+<div id="main">
+<span style="font-size:30px;cursor:pointer" onclick="openNav()" align="leftcolumn" >&#9776; Menu</span>
+</div>
+<h2 align="center"><img src="Images/Premier_League_Logo.svg.png"></img></h2>
+<h3><input id="searchbar" onkeyup="searchanything()" type="text"
+        name="search" placeholder="Search anything...">
+      </h3>
+      
+</div>
+
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card" data-city="Manchester United">
+      <h2 >Manchester United</h2>
+      <h5>Title description, Dec 7, 2017</h5>	  
+	  <img src="Images/Manchester United.jpg" height="300px" width="300px" align="center-right" >
+	  </img>
+      <p><i>Manchester United</i></p> 
+      <p>Manchester United was founded in 1878. Top soccer players include Cristiano Ronaldo and Wayne Rooney, both forwards.<span class="dots">...</span>
+	  <span class="more" style="display: none;">
+	  Manchester United has been cited as the top of the most successful clubs in Premier League history, and it's easy to see why. They have scored over 2021 points since 1992. Everyone loves Manchester United, primarily because they're incredible.
+	  Soccer analysts can tell you that their stats are off the charts — and that's all the more reason to think of them as a walking, talking hall of fame team.</span></p>
+    <button onclick="readMore('Manchester United')" class="myBtn">Read more</button>
+	</div>
+    <div class="card" data-city="Arsenal">
+      <h2>Arsenal</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <img src="Images/Arsenal.jpg" height="300px" width="300px"></img>
+      <p><i>Arsenal</i></p>
+      <p>Arsenal Soccer Club is the next on the list of the most successful clubs in Premier League history. Since 1992,<span class="dots">...</span> 
+	  <span class="more" style="display: none;">
+	  the group has scored a total of 1822 points.
+	  Chances are you know an Arsenal fan. It's the fifth most popular club, in terms of fanbase. Arsenal is a highly valuable soccer club in England, with an estimated value of $2 billion as of 2016.</span></p>
+	  <button onclick="readMore('Arsenal')" class="myBtn">Read more</button>
+	  </div>
+	  <div class="card" data-city="Chelsea">
+	  <h2>Chelsea</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+	  <img src="Images/Chelsea.jpg" height="300px" width="300px"></img>
+	  <p><i>Chelsea</i></p>
+	  <p>Third up on any list of the most successful clubs in Premier League history, is Chelsea. Now celebrating its 113th year in action,<span class="dots">...</span>
+	  <span class="more" style="display: none;">
+	  Chelsea FC has been raking up goal after goal on the scoreboards.Chelsea has a lot of numbers that are seriously impressive.
+	  They've scored 1789 goals since 1992, and the average home gate for last year's season was 41,507. 
+	 (That's the sixth highest home gate attendance rate for any club in the Premier League!)</span></p>
+	 <button onclick="readMore('Chelsea')" class="myBtn">Read more</button>
+	  </div>
+	  <div class="card" data-city="Liverpool">
+	  <h2>Liverpool</h2>
+	  <img src="Images/Liverpool.jpg" height="300px" width="300px"></img>
+	  <p><i>Liverpool</i></p>
+	  <p>Hailing from the birthplace of the Beatles, Liverpool FC was first established over 125 years ago.<span class="dots">...</span>
+	  <span class="more" style="display: none;">
+	  Since its humble beginnings, Liverpool has found win after win, and quickly climbed the ranks as one of the most successful clubs in Premier League history.
+	  Their cutthroat rivalry with Manchester United has become the stuff of legend. Perhaps that's why they've scored over 1600 points since 1992.</span></p>
+      <button onclick="readMore('Liverpool')" class="myBtn">Read more</button>
+	  </div>
+	  <div class="card" data-city="Tottenham Hotspur">
+	  <h2>Tottenham Hotspur</h2>
+	  <img src="Images/Tottenham Hotspur.jpg" height="300px" width="300px"></img> 
+	  <p><i>Tottenham Hotspur</i></p>
+	  <p>Tottenham Hotspur, often just called Tottenham or "Spurs" by their loyal fans, is one of the most successful clubs in Premier League history — especially when it comes to breaking ground.<span class="dots">...</span>
+	  <span class="more" style="display: none;">
+	  This was the first soccer team to win the League and FA Cup Double, and the first non-league winners of the FA Cup.
+	  When you combine their history-making past with the fact that they've scored over 1440 points since 1992, it is clear what makes them a force to be reckoned with.
+	  </span></p>
+	  <button onclick="readMore('Tottenham Hotspur')" class="myBtn">Read more</button>
+	  </div>
+	  <div class="card" data-city="Everton">
+	  <h2>Everton</h2>
+	  <img src="Images/Everton.jpg" height="300px" width="300px" ></img>
+	  <p><i>Everton </i></p>
+	  <p>As one of the most successful clubs in Premier League history, Everton has competed in the top division for a record 114 seasons.<span class="dots">...</span>
+	  <span class="more" style="display: none;">
+	  They are perhaps most famous for their cross-town rivalry with Liverpool, commonly known as the "Merseyside Derby."
+	  That alone tells you volumes about their success. To make things even more impressive, their 1324 goals since 1992 attests to their skill, too.
+	  Needless to say, this club has been around for over 135 years — and it's safe to say they will continue to be around.</span></p>
+	  <button onclick="readMore('Everton')" class="myBtn">Read more</button>
+	  </div>
+	  <div class="card" data-city="Aston Villa">
+	  <h2>Aston Villa</h2>
+	  	  <img src="Images/Aston Villa.jpg" height="300px" width="300px" ></img>
+	  <p><i>Aston Villa </i></p>
+	  <p>
+      With a very impressive 1223 goals scored since 1992, Aston Villa has rightfully earned its place among the most successful clubs that have previously been in Premier League history..<span class="dots">...</span>
+	  <span class="more" style="display: none;">
+	  The Blues, or the Villas as you might know them, have been around for over 140 years — making them one of the oldest soccer clubs in the US.</span></p>
+	  <button onclick="readMore('Aston Villa')" class="myBtn">Read more</button>
+	  </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <img src="Images/Premier-league.jpg" width="150px" height="100"></img>
+      <p></p>
+    </div>
+    <div class="card">
+      <h3>Popular Post</h3>
+	  <img src="Images/Premier-league.jpg" width="150px" height="100"></img>
+	  <img src="Images/Premier-league.jpg" width="150px" height="100"></img>
+	  <img src="Images/Premier-league.jpg" width="150px" height="100"></img>
+     
+    </div>
+    <div class="card">
+      <h3>Follow Me</h3>
+      <p>Instagram @bichi_basheer</p>
+    </div>
+	<div class="card">
+	</div>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>&copy; bashirbichi20@gmail.com 2022</h2>
+</div>
+
+</body>
+</html>
